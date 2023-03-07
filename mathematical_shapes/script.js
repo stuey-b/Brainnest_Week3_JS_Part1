@@ -6,10 +6,10 @@ const calculateSquareDiagonal = (sideLength) => {
   console.log(diagonal);
 };
 
-const calculateTriangleArea = (a, b, c) => {
-  const semiPerimeter = (a + b + c) / 2;
-  const triangleArea = Math.sqrt(semiPerimeter * (semiPerimeter - a) * 
-  (semiPerimeter - b) * (semiPerimeter - c));
+const calculateTriangleArea = (side1, side2, side3) => {
+  const semiPerimeter = (side1 + side2 + side3) / 2;
+  const triangleArea = Math.sqrt(semiPerimeter * (semiPerimeter - side1) * 
+  (semiPerimeter - side2) * (semiPerimeter - side3));
   console.log(triangleArea);
 };
 
