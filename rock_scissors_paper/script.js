@@ -1,3 +1,8 @@
+let notGameOver = true;
+let computerScore = 0;
+let playerScore = 0;
+let currentRound = 1;
+
 const computerPlay = () => {
   //options that the computer can choose
   choices = [`rock`, `scissors`, `paper`];
@@ -8,42 +13,56 @@ const computerPlay = () => {
 }
 
 const playerPlay = () => {
-  //ask the user to make a choice
-  const playerSelection = prompt("Make a choice. Type 'rock', 'scissors' or 'paper': ");
-  //return their choice and set all characters to lowercase
+  const playerSelection = prompt("Make a choice. Type 'rock', 'scissors' or 'paper' below: ");
   return playerSelection.toLowerCase();
 }
 
-// notGameOver = true
+const nextRound = () => currentRound += 1;
 
-let computerScore = 0
-let playerScore = 0
+const displayFinalScore = (playerScore, computerScore) => {
+  if (playerScore > computerScore) {
+    return `FINAL RESULT: Your Score: ${playerScore}. Opponents score: ${computerScore}. CONGRATULATIONS! You WON!`
+  } else if (playerScore < computerScore) {
+    return `FINAL RESULT: Your Score: ${playerScore}. Opponents score: ${computerScore}. OOF! You LOST. Better luck next time.`
+  } else {
+    return `FINAL RESULT: Your Score: ${playerScore}. Opponents score: ${computerScore}. You TIED!`
+  }
+}
 
 const playRound = () => {
   const playerSelection = playerPlay();
   const computerSelection = computerPlay();
-  console.log(playerSelection, computerSelection);
   switch (playerSelection + " " + computerSelection) {
-    //the game is a tie
     case `rock rock`:
     case `scissors scissors`:
     case `paper paper`:
-      console.log("it's a tie!");
-      break;
+      return `You TIED! ${playerSelection} & ${computerSelection}.`;
     case `paper rock`:
     case `rock scissors`:
     case `scissors paper`:
       playerScore += 1;
-      console.log(`You WIN! Your current score is ${playerScore}`);
-      // return `You win!`
-      break;
+      return `You WON! ${playerSelection} beats ${computerSelection}.`;
     case `rock paper`:
     case `scissors rock`:
     case `paper scissors`:
       computerScore += 1;
-      console.log("You LOSE!");
-    // return `You LOSE!`
+      return `You LOST! ${computerSelection} beats ${playerSelection}.`;
   }
 }
 
-playRound();
+const game = () => {
+  console.log(`Let's play ROCK, SCISSORS, PAPER!`);
+  while (notGameOver) {
+    if (currentRound <= 5) {
+      console.log(`********** ROUND ${currentRound} **********`);
+      console.log(playRound());
+      nextRound();
+    } else {
+      console.log(displayFinalScore(playerScore, computerScore));
+      console.log(`Thanks for playing! GAME OVER`);
+      notGameOver = false
+    }
+  }
+}
+
+game();
