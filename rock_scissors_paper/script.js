@@ -4,11 +4,8 @@ let playerScore = 0;
 let currentRound = 1;
 
 const computerPlay = () => {
-  //options that the computer can choose
   choices = [`rock`, `scissors`, `paper`];
-  //use RNG to randomly select a value from the choices array
   const randomChoice = Math.floor(Math.random() * choices.length);
-  //return the selected choice
   return choices[randomChoice];
 }
 
@@ -52,6 +49,27 @@ const playRound = () => {
 
 const game = () => {
   console.log(`Let's play ROCK, SCISSORS, PAPER!`);
+  console.log(`    
+      _______
+  ---'   ____)
+        (_____)
+        (_____)
+        (____)
+  ---.__(___) `);
+  console.log(`    
+      _______
+  ---'   ____)____
+            ______)
+         __________)
+        (____)
+  ---.__(___)`);
+  console.log(`     
+      _______
+  ---'    ____)____
+             ______)
+            _______)
+           _______)
+  ---.__________)`);
   while (notGameOver) {
     if (currentRound <= 5) {
       console.log(`********** ROUND ${currentRound} **********`);
