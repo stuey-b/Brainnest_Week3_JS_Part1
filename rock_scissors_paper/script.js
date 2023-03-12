@@ -34,6 +34,14 @@ const displayFinalScore = (playerScore, computerScore) => {
   }
 };
 
+const playAgain = () => {
+  computerScore = 0;
+  playerScore = 0;
+  currentRound = 1;
+  console.clear();
+  game();
+};
+
 const playRound = () => {
   const playerSelection = playerPlay();
   const computerSelection = computerPlay();
@@ -44,12 +52,12 @@ const playRound = () => {
       case `paper rock`:
       case `rock scissors`:
       case `scissors paper`:
-        playerScore += 1;
+        playerScore++;
         return `You WON! ${playerSelection} beats ${computerSelection}.`;
       case `rock paper`:
       case `scissors rock`:
       case `paper scissors`:
-        computerScore += 1;
+        computerScore++;
         return `You LOST! ${computerSelection} beats ${playerSelection}.`;
     }
   }
@@ -94,11 +102,12 @@ const game = () => {
         `Would you like to play again? Type 'y' or 'n': `
       );
       if (playAgainInput === `y`) {
-        computerScore = 0;
-        playerScore = 0;
-        currentRound = 1;
-        console.clear();
-        game();
+        playAgain();
+        // computerScore = 0;
+        // playerScore = 0;
+        // currentRound = 1;
+        // console.clear();
+        // game();
       } else {
         notGameOver = false;
         console.log(`Thanks for playing! GAME OVER`);
