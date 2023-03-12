@@ -37,13 +37,6 @@ const displayFinalScore = () => {
   }
 };
 
-const playAgain = () => {
-  computerScore = 0;
-  playerScore = 0;
-  console.clear();
-  game();
-};
-
 const playRound = () => {
   const playerSelection = playerPlay();
   const computerSelection = computerPlay();
@@ -66,6 +59,7 @@ const playRound = () => {
 };
 
 const game = () => {
+  
   console.log(`Let's play ROCK, SCISSORS, PAPER!`);
   console.log(`    
       _______
@@ -97,7 +91,10 @@ const game = () => {
       console.log(displayFinalScore());
       const playAgainInput = prompt(`Would you like to play again? Type 'y' or 'n': `);
       if (playAgainInput === `y`) {
-        playAgain();
+        computerScore = 0;
+        playerScore = 0;
+        console.clear();
+        game();
       } else {
         gameOver = true;
         console.log(`Thanks for playing! GAME OVER`);
