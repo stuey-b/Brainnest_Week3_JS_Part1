@@ -1,6 +1,10 @@
+let gameOver = false;
+let computerScore = 0;
+let playerScore = 0;
+let currentRound = 1;
+
 const computerPlay = () => {
-  const randomNumber = Math.floor(Math.random() * 3);
-  switch (randomNumber) {
+  switch (Math.floor(Math.random() * 3)) {
     case 0:
       return `rock`;
     case 1:
@@ -11,11 +15,10 @@ const computerPlay = () => {
 };
 
 const playerPlay = () => {
-  const playerSelection = prompt(`Type 'rock', 'scissors' or 'paper' below: `);
-  return playerSelection.toLowerCase();
+  return prompt(`Type 'rock', 'scissors' or 'paper' below: `).toLowerCase();
 };
 
-const displayFinalScore = (playerScore, computerScore) => {
+const displayFinalScore = () => {
   if (playerScore > computerScore) {
     return `FINAL RESULT: 
     Your Score: ${playerScore} 
@@ -37,7 +40,6 @@ const displayFinalScore = (playerScore, computerScore) => {
 const playAgain = () => {
   computerScore = 0;
   playerScore = 0;
-  currentRound = 1;
   console.clear();
   game();
 };
@@ -64,10 +66,6 @@ const playRound = () => {
 };
 
 const game = () => {
-  let notGameOver = true;
-  let computerScore = 0;
-  let playerScore = 0;
-  let currentRound = 1;
   console.log(`Let's play ROCK, SCISSORS, PAPER!`);
   console.log(`    
       _______
@@ -90,26 +88,19 @@ const game = () => {
             _______)
            _______)
   ---.__________)`);
-  while (notGameOver) {
+  while (!gameOver) {
     if (currentRound <= 5) {
       console.log(`********** ROUND ${currentRound} **********`);
       console.log(playRound());
       currentRound++;
     } else {
-      console.log(displayFinalScore(playerScore, computerScore));
+      console.log(displayFinalScore());
       console.log(`Would you like to play again? Check the prompt box.`);
-      const playAgainInput = prompt(
-        `Would you like to play again? Type 'y' or 'n': `
-      );
+      const playAgainInput = prompt(`Would you like to play again? Type 'y' or 'n': `);
       if (playAgainInput === `y`) {
         playAgain();
-        // computerScore = 0;
-        // playerScore = 0;
-        // currentRound = 1;
-        // console.clear();
-        // game();
       } else {
-        notGameOver = false;
+        gameOver = true;
         console.log(`Thanks for playing! GAME OVER`);
       }
     }
