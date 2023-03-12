@@ -1,4 +1,4 @@
-let notGameOver = true;
+let gameOver = false;
 let computerScore = 0;
 let playerScore = 0;
 let currentRound = 1;
@@ -61,6 +61,7 @@ const playRound = () => {
 const playAgain = () => {
   computerScore = 0;
   playerScore = 0;
+  currentRound = 1
   console.clear();
   game();
 };
@@ -88,18 +89,18 @@ const game = () => {
             _______)
            _______)
   ---.__________)`);
-  while (notGameOver) {
+  while (!gameOver) {
     if (currentRound <= 5) {
       console.log(`********** ROUND ${currentRound} **********`);
       console.log(playRound());
       currentRound++;
     } else {
       console.log(displayFinalScore());
-      const playAgainInput = prompt(`Would you like to play again? Type 'y' or 'n': `);
-      if (playAgainInput === `y`) {
-        playAgain()
+      const playAgainInput = prompt(`Would you like to play again? Type 'y' or 'n': `).toLowerCase();
+      if (playAgainInput === 'y') {
+        playAgain();
       } else {
-        notGameOver = false;
+        gameOver = true;
         console.log(`Thanks for playing! GAME OVER`);
       }
     }
