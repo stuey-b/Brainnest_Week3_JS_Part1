@@ -95,7 +95,6 @@ const game = () => {
       currentRound++;
     } else {
       console.log(displayFinalScore());
-      console.log(`Would you like to play again? Check the prompt box.`);
       const playAgainInput = prompt(`Would you like to play again? Type 'y' or 'n': `);
       if (playAgainInput === `y`) {
         playAgain();
