@@ -88,7 +88,7 @@ const game = () => {
             _______)
            _______)
   ---.__________)`);
-  while (!gameOver) {
+  while (notGameOver) {
     if (currentRound <= 5) {
       console.log(`********** ROUND ${currentRound} **********`);
       console.log(playRound());
