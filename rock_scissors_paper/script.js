@@ -59,7 +59,6 @@ const playRound = () => {
 };
 
 const game = () => {
-  
   console.log(`Let's play ROCK, SCISSORS, PAPER!`);
   console.log(`    
       _______
